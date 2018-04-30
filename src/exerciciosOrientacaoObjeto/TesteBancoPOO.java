@@ -48,11 +48,17 @@ public class TesteBancoPOO {
 		 * 6- Sacar um valor igual ao saldo
 		 */
 		
+		System.out.println("Sacando R$0,00 da conta Bruno");
 		c1.draw(0.0);
+		System.out.println("Sacando R$-1,00 da conta Bruno");
 		c1.draw(-1.0);
+		System.out.println("Sacando R$1000,01 da conta Janaina");
 		c2.draw(1000.01);
+		System.out.println("Sacando R$500,00 da conta Janaina");
 		c2.draw(500);
+		System.out.println("Sacando R$501,00 da conta Janaina");
 		c2.draw(501);
+		System.out.println("Sacando R$1000,00 da conta Bruno");
 		c1.draw(1000.00);
 		
 		/*
@@ -63,9 +69,13 @@ public class TesteBancoPOO {
 		 * 3- Depositar um valor positivo
 		 */
 		
+		System.out.println("Depositando R$0,00 na conta Bruno");
 		c1.deposit(0);
+		System.out.println("Depositando R$-1,00 na conta Janaina");
 		c2.deposit(-1);
+		System.out.println("Depositando R$1000,00 na conta Bruno");
 		c1.deposit(1000);
+		System.out.println("Depositando R$1000,00 na conta Janaina");
 		c2.deposit(1000);
 		
 		/*
@@ -74,10 +84,16 @@ public class TesteBancoPOO {
 		 * 1- Chamada do metodo com saldos em R$1000,00
 		 * 2- Zerar as contas e chamar o metodo
 		 */
+		
+		System.out.println("Rendimento de 10% em cima de R$1.000,00 na conta Bruno");
 		c1.rent();
+		System.out.println("Rendimento de 10% em cima de R$1.500,00 na conta Janaina");
 		c2.rent();
-		c1.draw(1000);
-		c2.draw(1000);
+		System.out.println("Sacando R$1100,00 da conta Bruno");
+		c1.draw(1100);
+		System.out.println("Sacando R$1650,00 da conta Janaina");
+		c2.draw(1650);
+		System.out.println("Rendimento de 10% em cima de R$0,00 nas contas Bruno e Janaina");
 		c1.rent();
 		c2.rent();
 		

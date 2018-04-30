@@ -88,9 +88,9 @@ public class Conta {
 			/*
 			 * Se for maior que zero o saldo da conta será multiplicado por 0.1
 			 */
-			double newBalance = this.balance * 0.1;
+			double newBalance = this.balance + this.balance * 0.1;
 			this.balance = newBalance;
-			System.out.println(this.accountHolder + "Seu saldo atual: R$" + this.balance);
+			System.out.println(this.accountHolder + " Seu saldo atual: R$" + this.balance);
 		}
 	}
 }
