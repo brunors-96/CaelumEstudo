@@ -13,7 +13,7 @@ public class Conta {
 	 * informado deve ser maior que 0 - Valor informado não deve ultrapassar o saldo
 	 * da conta
 	 */
-	void draw(double pValue) {
+	boolean draw(double pValue) {
 
 		/*
 		 * Verifica se o valor informado pelo usuário é maior que 0
@@ -21,21 +21,25 @@ public class Conta {
 		if (pValue > 0) {
 			/*
 			 * Se o valor informado pelo usuário for maior que 0, verifica se o usuário tem
-			 * saldo suficiente na conta, se tiver, subtrai o valor informado pelo usuário e
-			 * retorna a mensagem de sucesso juntamente com a mensagem do salto atual
+			 * saldo suficiente na conta
 			 */
 			if (pValue > this.balance) {
+				/*
+				 * Se o valor para saeque for maior do que o saldo em conta, retorna mensagem de falha. 
+				 */
 				System.out.println("Não foi possivel efetuar o saque, saldo insuficiente.");
 				System.out.println(this.accountHolder + " Seu saldo atual: R$" + this.balance);
+				return false;
 			}
 			/*
-			 * caso não tenha saldo retorna a mensagem de saldo insuficiente.
+			 * caso tenha saldo retorna a mensagem de sucesso no saque.
 			 */
 			else {
 				double newBalance = this.balance - pValue;
 				this.balance = newBalance;
 				System.out.println("Saque efetuado com sucesso.");
 				System.out.println(this.accountHolder + " Seu saldo atual: R$" + this.balance);
+				return true;
 			}
 		}
 		/*
@@ -45,6 +49,7 @@ public class Conta {
 		else {
 			System.out.println("Valor informado inválido!");
 			System.out.println("Tente novamente.");
+			return false;
 		}
 	}
 
@@ -52,7 +57,7 @@ public class Conta {
 	 * Metodo para depositar valores em uma conta. Regras de negocio: - Valor
 	 * informado não dever se menor que 0.
 	 */
-	void deposit(double pValue) {
+	boolean deposit(double pValue) {
 
 		/*
 		 * Verifica se o valor informado pelo usuário para deposita não é negativo.
@@ -62,6 +67,7 @@ public class Conta {
 			this.balance = newBalance;
 			System.out.println("Deposito efetuado com sucesso!");
 			System.out.println(this.accountHolder + " Seu saldo atual: R$" + this.balance);
+			return true;
 		}
 
 		/*
@@ -71,6 +77,7 @@ public class Conta {
 		else {
 			System.out.println("Valor informado inválido!");
 			System.out.println("Tente novamente.");
+			return false;
 		}
 	}
 
@@ -80,7 +87,7 @@ public class Conta {
 	 * Saldo da conta deve ser diferente de 0 - Saldo da conta não deve estar
 	 * negativo.
 	 */
-	void rent() {
+	double rent() {
 		/*
 		 * Verifica se o saldo é maior que zero
 		 */
@@ -90,7 +97,34 @@ public class Conta {
 			 */
 			double newBalance = this.balance + this.balance * 0.1;
 			this.balance = newBalance;
-			System.out.println(this.accountHolder + " Seu saldo atual: R$" + this.balance);
+			System.out.println(this.accountHolder + " Seu saldo atual: R$");
+			return this.balance;
 		}
+		return (Double) null;
 	}
+	
+	/*
+	 * Metodo para transferir dinheiro entre duas contas, recebe a conta de destino e o valor a ser transferido.
+	 * Regras de negocio:
+	 * - A conta de origem deve ter saldo dispon�vel em conta
+	 * - Valor a ser transferido n�o pode ser negativo
+	 * - Valor a ser transferido n�o pode ser igual a 0
+	 */
+	
+	boolean trade(Conta pDestiny, double pValue)
+	{
+		boolean withdraw = this.draw(pValue);
+		
+		if (!withdraw)
+		{
+			return false;
+		}
+		
+		pDestiny.deposit(pValue);		
+		return true;
+	}
+	
+	/*
+	 * pagina 60 https://www.caelum.com.br/download/caelum-java-objetos-fj11.pdf
+	 */
 }

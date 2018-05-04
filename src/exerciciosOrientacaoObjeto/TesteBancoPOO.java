@@ -5,7 +5,6 @@ public class TesteBancoPOO {
 	/*
 	 * Essa classe principal testa as funções criadas na classe
 	 * Conta.
-	 * pagina 55 https://www.caelum.com.br/download/caelum-java-objetos-fj11.pdf
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
